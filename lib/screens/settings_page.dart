@@ -132,12 +132,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 const Text("Developed by Rishi C", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 const SizedBox(width: 10),
                 TextButton(
+                  style: TextButton.styleFrom(fixedSize: const Size(70, 10)),
                   onPressed: () {
                     launchUrlString('https://github.com/Sage-Rishi');
                   },
                   child: const Text('Github'),
                 ),
                 TextButton(
+                  style: TextButton.styleFrom(fixedSize: const Size(90, 10)),
                   onPressed: () {
                     launchUrlString('https://www.linkedin.com/in/rishi-ch/');
                   },

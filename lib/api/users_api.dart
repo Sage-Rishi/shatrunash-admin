@@ -6,9 +6,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class UsersApi {
   final supabase = Supabase.instance.client;
 
-  Future<List<dynamic>?> getAllUnverifiedUsers(BuildContext context) async {
+  Future<List<dynamic>?> getAllUsers(BuildContext context) async {
     try {
-      final response = await supabase.from('users').select('*').eq('verified', false);
+      final response = await supabase.from('users').select('*');
       print("object: $response ");
       return response;
     } catch (e) {

@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   //Init State
   @override
   void initState() {
@@ -22,8 +22,7 @@ class _HomePageState extends State<HomePage> {
   //Get users
   Future<void> getUnverifiedUsers() async {
     setState(() => loading = true);
-    users = filteredUsers = await UsersApi().getAllUnverifiedUsers(context);
-    print("USERS: $users");
+    users = filteredUsers = await UsersApi().getAllUsers(context);
     setState(() => loading = false);
   }
 
@@ -135,6 +134,7 @@ class _HomePageState extends State<HomePage> {
                               const SizedBox(height: 10),
                               Text("Phone Number: ${filteredUsers![index]['phone']}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                               Text("Unit Name: ${filteredUsers![index]['unit']}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                              Text("Gender: ${filteredUsers![index]['gender']}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                               Text("Role: ${filteredUsers![index]['role']}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                               Text("Date of Enrolment: ${formatMillisecondsSinceEpoch(filteredUsers![index]['date_of_enrolment'])}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                               Text("Date of Birth: ${formatMillisecondsSinceEpoch(filteredUsers![index]['date_of_birth'])}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
